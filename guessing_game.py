@@ -1,4 +1,4 @@
-# This is an exercise in using random, while loops, if statements, and elif
+# This is an exercise in using random, while loops, if else statements, and elif
 # in Python to make a simple guessing game
 
 import random
@@ -38,7 +38,7 @@ def computer_guess(y, computer_score):
     computer = computer_score
     while feedback != 'j':
         guess = random.randint(low, high)
-        # this time, fwe have a variable feedback is equal to the user input
+        # this time, variable feedback is equal to the user input
         feedback = input(f'is {guess} too high(H) too low(L) or just right(J)?')
         # every time we get a new random int (guess), this function receives feedback
         # until feedback is j, the loop continues.
@@ -78,19 +78,28 @@ if __name__ == "__main__":
         if computer > player:
             print(f"You Win!  Your score was {player}, "
                   f"and the computer scored {computer}")
-            win = True
+            # This if elif statement executes after the while loop
+            # and checks if the user wants to play again
+            response = input("Thanks for playing.  Play again? (Y/N)")
+            if response == 'y':
+                win = False
+            else:
+                print("Have a good day >:)")
+                win = True
         elif player > computer:
             print(f"The computer has won.  Your score was {player}, "
                   f"the computer scored {computer}")
-            win = True
+            response = input("Thanks for playing.  Play again? (Y/N)")
+            if response == 'y':
+                win = False
+            else:
+                print("Have a good day >:)")
+                win = True
         elif computer == player:
             print("Tie!  No one wins this time.")
-            win = True
-
-        # This if elif statement executes after the while loop
-        # and checks if the user wants to play again
-        response = input("Thanks for playing.  Play again? (Y/N)")
-        if response == 'y':
-            win = False
-        elif response == 'n':
-            print("Have a good day >:)")
+            response = input("Thanks for playing.  Play again? (Y/N)")
+            if response == 'y':
+                win = False
+            else:
+                win = True
+                print("Have a good day >:)")
